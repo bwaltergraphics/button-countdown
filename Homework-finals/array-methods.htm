@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function switch_fields(x) {
+                hideFields();
+                switch (x) {
+                    case "fill": 
+                        document.getElementById('n').style.display = "block";
+                        break;
+                    case "pop": 
+                        break;
+                    case "push": 
+                        document.getElementById('n').style.display = "block";
+                        break;
+                    case "length": 
+                        break;
+                    case "sort":
+                        break;
+                    case "reverse":
+                        break;
+                    case "shift": 
+                        break;
+                }
+            }
+
+            function hideFields() {
+                inputs = document.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].style.display = "none";
+                    inputs[i].value = "";
+                }
+                document.getElementById('input').style.display = 'inline';
+                document.getElementById('output').style.display = 'inline';
+            }
+
+            function process() {
+
+                input = document.getElementById('input').value;
+                arrayName = input.split(" ");
+                n = document.getElementById('n').value;
+
+
+                //sub = document.getElementById('sub').value;
+                //find = document.getElementById('find').value;
+                //rep = document.getElementById('rep').value;
+
+
+                switch (document.getElementById('function').value) {
+                    case "fill": 
+                        output = arrayName.fill(n);// WORKS
+                        break;
+                    case "pop": 
+                        output = arrayName.pop();//WORKS
+                        break;
+                    case "push": 
+                        output = arrayName.push(n);//RETURNS NUMBER OF ELEMENTS RATHER THAN ADDING ON AN ELEMENT AT THE END
+                        break;
+                    case "length": 
+                        output = arrayName.length();//NO LUCK AT ALL
+                        break;
+                    case "sort":
+                        output = arrayName.sort();// WORKS
+                        break;
+                    case "reverse":
+                        output = arrayName.reverse();// WORKS
+                        break;
+                    case "shift": 
+                        output = arrayName.shift();//WORKS
+                        break;
+                }
+                document.getElementById('output').value = output;
+            }
+
+        </script>
+        <style>
+            body {
+                padding-top:50px;
+            }
+            #container {
+                margin:auto;
+                width: 300px;
+            }
+            input[type=text], select, button {
+                font-size:32px;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                width:300px;
+                margin-bottom:20px;
+            }
+            #n, #sub, #find, #rep {
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <select id="function" onChange="switch_fields(this.value)">
+                <option value="">-- Choose --</option>
+                <option value="fill">fill(n)</option><!-- fills all the elements with a static value -->
+                <option value="pop">pop()</option><!-- removes last element shift array and returns it -->
+                <option value="push">push(n)</option><!-- Add a new item to an array -->
+                <option value="length">length()</option><!-- returns the number of elements in an array -->
+                <option value="sort">sort()</option><!-- sorts arrays alphabetically -->
+                <option value="reverse">reverse()</option><!--reverse order of array: -->
+                <option value="shift">shift()</option><!-- converts strings into arrays:  -->
+            </select>
+            <br>
+            <input type="text" placeholder="Input a string" id="input" />
+            <br>
+            <input type="text" id="n" placeholder="n" />
+            <br>
+            <br>
+            <input type="text" id="output" placeholder="Output" readonly="true">
+            <button onClick="process();">Run</button>
+        </div>
+    </body>
+</html>

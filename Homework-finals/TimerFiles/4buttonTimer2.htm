@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Countdown</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Nunito+Sans|VT323&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap" rel="stylesheet">
+
+        <script type="text/javascript">
+
+
+        var i = 0;
+        var txt = '007... Auric Goldfinger has placed a bomb at Fort Knox. There a four step process to disarm the device. Follow this proper sequence to properly render the weapon inoperable. WARNING, YOU HAVE LESS THAN 10 SECONDS BETWEEN EACH STEP ONCE THE PROCESS HAS STARTED... good luck and God speed.';
+        var speed = 50;
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("mission").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+                }
+        }
+
+        function buttonOneAction() {
+        document.getElementById("mission").innerHTML = "Not fast enough, the gold is lost";
+        document.getElementById("explosion").style.display = "block";
+        }
+        
+        function butOneMessage() {
+        document.getElementById("mission").innerHTML = "Hurry you have less that 10 seconds to complete the next step";
+        document.getElementById("button-one").style.backgroundColor = "black";
+        }
+
+
+        function buttontwoAction() {
+        document.getElementById("mission").innerHTML = "Good work 007! Now on to step 3";
+        document.getElementById("button-two").style.backgroundColor = "black";
+
+        }
+        
+        var countdownTimer = setInterval(butThreeAction, 1000);
+ 
+        function butThreeAction(){
+                if (beginningTime >= 1) {
+                    document.getElementById("message").innerHTML =  beginningTime;
+                    document.getElementById("button-three").style.backgroundColor = "black";
+                    beginningTime--;
+                    }else {
+                        beginningTime = 0
+                        document.getElementById("mission").innerHTML = "Boom, the gold is lost";
+                        document.getElementById("explosion").style.display = "block";
+
+
+                    }
+            }
+            
+            function savedTheDay(){
+                    document.getElementById("mission").innerHTML =  "You saved America's gold reserve! Now go enjoy a vodka martini.";
+                    document.getElementById("button-four").style.backgroundColor = "black";
+
+                    }
+
+            function DontBreakQuote(){
+                    document.getElementById("q-image").style.bottom= "0px";
+                    document.getElementById("q-quote").style.display = "block";
+                    document.getElementById("q-quote").innerHTML =  "Good Job 007. Now next time, let's try not to break anything, shall we?";
+                    }
+
+    
+        </script>
+<style>
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    background-color: bisque;
+    background-image: url("images/bond.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+}
+
+
+
+
+
+body {
+    text-align: center;
+    font-style: ;
+}
+
+.sidebar{
+    background-color: gray;
+    align-content: left;
+    margin: 40px 3% 0 3%;
+    max-width: 45%;
+    padding: 40px;
+    border-radius: 4px;
+
+}
+
+button {
+    padding: 12px;
+    margin: 12px;
+    width: 200px;
+    background-color: lightgray;
+    border-radius: 4px;
+    color: black;
+    display:block;
+    font-size: 1em;
+
+}
+
+button:hover {
+    background-color: darkslategrey;
+}
+
+#explosion {
+    position: fixed;
+    left: 20%;
+    height: 800px;
+    z-index: 100;
+    display: none;
+    bottom: 200px;
+
+}
+
+
+
+
+#q-image {
+    position: fixed;
+    bottom: -200px;
+    left: 2%;
+    height: 200px;
+    z-index: 100;
+}
+
+#q-quote {
+    height: 100px;
+    width: 400px;
+    background-color: honeydew;
+    color: red;
+    padding: 3px;
+    border-radius: 12px;
+    border: red solid 2px;
+    margin-left: 200px;
+    bottom: 80px;
+    position: fixed;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.5rem;
+    display: none;
+}
+
+#q-quote {
+    padding-top: 26px;
+}
+
+
+
+.vintage-screen{
+ width: 90%;
+ height: 150px;
+ background-color: darkgreen;
+ border-radius: 20px;
+ padding: 20px;
+ border: gray solid 2px;
+ -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+ -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+ box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+
+}
+
+#mission {
+    text-align: left;
+    font-family: 'VT323', monospace;
+    color: greenyellow;
+    font-size: 1.4em;
+    text-shadow: 1px 1px 4px Yellow;
+    
+}
+
+#message{
+    height: 50px;
+    width: 100px;
+    background-color: darkgreen;
+    float: right;
+    border-radius: 50%;
+    color: greenyellow;
+    font-family: 'VT323', monospace;
+    padding: 25px 0;
+    font-size: 50px;
+    margin-right: 24px;
+    margin-top: 50px;
+    border: gray solid 2px;
+    -moz-box-shadow: inset -2px -2px 2px rgba(0, 0, 0, .4), inset 2px 2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset -2px -2px 2px rgba(0, 0, 0, .4), inset 2px 2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset -2px -2px 2px rgba(0, 0, 0, .4), inset 2px 2px 2px rgba(0, 0, 0, .4);
+    font-family: 'Anonymous Pro', monospace;
+    text-shadow: 1px 1px 4px Yellow;
+
+
+
+
+
+
+
+}
+</style>
+
+
+    </head>
+<body>
+
+  <section>
+
+    <div class="sidebar">
+        <h2>MI-6 Top Secret Mission Details</h2>
+        <button onclick="typeWriter()">For Your Eyes Only</button>
+
+        
+        <div class="vintage-screen">
+            <p id="mission"></p>
+        </div>
+
+        <h1 id="message"></h1>
+        
+        <button id="button-one" onClick="butOneMessage(), startTimer = setTimeout(buttonOneAction, 10000) ">Start Here</button>
+        
+        <button id="button-two" onClick="clearTimeout(startTimer), buttontwoAction()">Step Two</button>
+        
+        <button id="button-three" onClick="butThreeAction(beginningTime = 10)">Step Three</button>
+        
+        <button id="button-four" onClick="clearInterval(countdownTimer), savedTheDay(), DontBreakQuote()">Step Four</button><br/>
+    </div>
+
+    <img id="explosion" src="images/giphy-1.gif" alt="Q">
+
+    <img id="q-image" src="images/q-3.png" alt="Q">
+    <div id="q-quote"><h2></h2></div>
+</section>  
+
+
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <script type="text/javascript">
+
+            var calculation;
+            var firstNumber;
+            var operator = null;
+            var currentOperation = null;
+            function calc(x) {
+                calculation = document.getElementById("calculation").value;
+                var decimal = (calculation.endsWith(".")) ? '.' : ''; // ternary operator
+                calculation = parseFloat(calculation);
+
+
+                var parsed = parseFloat(x);
+                if (isNaN(parsed) && x != ".") {
+                    if (x == 'neg') {
+                        calculation = calculation * -1;
+                        document.getElementById("calculation").value = parseFloat(calculation);
+                        return;
+                    } else if (x == "AC") {
+                        calculation = 0;
+                        operator = null;
+                        currentOperation = null;
+                        firstNumber = undefined;
+                    } else if (x == "=" || currentOperation != null) {
+                        switch(currentOperation) {
+                            case '+':
+                                calculation = parseFloat(firstNumber) + parseFloat(calculation);
+                                currentOperation = x;
+                                break;
+                            case '-':
+                                calculation = parseFloat(firstNumber) - parseFloat(calculation);
+                                currentOperation = x;
+                                break;
+                            case '/':
+                                calculation = parseFloat(firstNumber) / parseFloat(calculation);
+                                currentOperation = x;
+                                break;
+                            case '*':
+                                calculation = parseFloat(firstNumber) * parseFloat(calculation);
+                                currentOperation = x;
+                                break;
+
+                        }
+                        
+                    } 
+
+                    firstNumber = calculation;
+                    operator = x;
+ 
+                } else {
+                    // a number was pressed
+                    
+                    if (x == ".") {
+                        calculation = calculation + ".";
+                    } else if (operator != null) {
+                        calculation = decimal + parsed;
+                        currentOperation = operator;
+                        operator = null;
+                    } else {
+                        calculation = "" + calculation + decimal + parsed;
+                    }
+
+                }
+
+                var val;
+                if (String(calculation).endsWith(".")) {
+                    val = calculation;
+                } else {
+                    val = parseFloat(calculation);
+                }
+
+                document.getElementById("calculation").value = val;
+            }
+        </script>
+        <style>
+            button {
+                width: 50px;
+                height:50px;
+                margin:5px;
+                font-size:16px;
+            }
+            input {
+                width: 225px;
+                font-size:24px;
+                margin-left:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" value="0" name="total" readonly="true" id="calculation" /><br>
+        <button onClick="calc(7);">7</button><button onClick="calc(8);">8</button><button onClick="calc(9);">9</button><button onClick="calc('/');">/</button><br />
+        <button onClick="calc(4);">4</button><button onClick="calc(5);">5</button><button onClick="calc(6);">6</button><button onClick="calc('*');">*</button><br />
+        <button onClick="calc(1);">1</button><button onClick="calc('2');">2</button><button onClick="calc(3);">3</button><button onClick="calc('-');";>-</button><br />
+        <button onClick="calc(0);">0</button><button onClick="calc('.')">.</button><button onClick="calc('neg');">(-)</button><button onClick="calc('+');">+</button><br />
+        <button onClick="calc('=');">=</button><button onClick="calc('AC');">AC</button>
+    </body>
+</html>
